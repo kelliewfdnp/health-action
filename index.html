@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-.tabs-row>:first-child{margin-left:auto}.tabs-row>:last-child{margin-right:auto}
+
 @media (orientation:portrait){.chips-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
 body{font-family:'Inter',sans-serif}
 ::-webkit-scrollbar{width:6px;height:6px}::-webkit-scrollbar-track{background:#f1f5f9}
@@ -167,9 +167,7 @@ const CLIENT={
  </div>
 
  <!-- Tabs -->
- <div class="tabs-row flex flex-nowrap overflow-x-auto scrollbar-none scroll-smooth gap-2 border-b border-slate-200 pb-3">
-  <template x-for="(tb,id) in D.tabs" :key="id"><button @click="tab=id" :class="tab===id?'bg-emerald-600 border-emerald-600 text-white shadow-md':'bg-white border-slate-200 text-slate-700 hover:bg-slate-50 shadow-sm'" class="px-3 py-2 text-sm font-semibold rounded-xl border transition flex items-center gap-1.5 whitespace-nowrap shrink-0"><i :class="'fa-solid fa-'+tb.icon+' '+(tab===id?'text-white':'text-'+tb.tone+'-600')"></i><span x-text="t(tb.label)"></span><span x-show="id==='actionplan'" class="text-sm font-bold px-2 py-0.5 rounded-full bg-amber-400 text-amber-950" x-text="doneCount()+'/'+D.plan.p1.items.length"></span></button></template>
- </div>
+ <div class="tabs-row overflow-x-auto scrollbar-none scroll-smooth border-b border-slate-200 pb-3"><div class="flex gap-2 w-max mx-auto"><template x-for="(tb,id) in D.tabs" :key="id"><button @click="tab=id" :class="tab===id?'bg-emerald-600 border-emerald-600 text-white shadow-md':'bg-white border-slate-200 text-slate-700 hover:bg-slate-50 shadow-sm'" class="px-3 py-2 text-sm font-semibold rounded-xl border transition flex items-center gap-1.5 whitespace-nowrap shrink-0"><i :class="'fa-solid fa-'+tb.icon+' '+(tab===id?'text-white':'text-'+tb.tone+'-600')"></i><span x-text="t(tb.label)"></span><span x-show="id==='actionplan'" class="text-sm font-bold px-2 py-0.5 rounded-full bg-amber-400 text-amber-950" x-text="doneCount()+'/'+D.plan.p1.items.length"></span></button></template></div></div>
 
  <!-- TAB 1 -->
  <div x-show="tab==='ecosystem'" x-transition class="space-y-6">
