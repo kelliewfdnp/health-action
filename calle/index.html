@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Health Action Dashboard</title>
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<style>.fa-solid{display:inline-block;width:1.2em;height:1.2em;vertical-align:-.2em;font-style:normal}.fa-solid::before{content:"";display:block;width:100%;height:100%;background:currentColor;-webkit-mask:var(--i) center/contain no-repeat;mask:var(--i) center/contain no-repeat}.fa-child-reaching{--i:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' stroke=%22black%22 stroke-width=%222.9%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 fill=%22none%22%3E%3Ccircle cx='12' cy='5' r='2.3' fill='black'/%3E%3Cpath d='M4 9l8 2 8-2M12 11v5M9 21l3-5 3 5'/%3E%3C/svg%3E")}.fa-user-doctor{--i:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' stroke=%22black%22 stroke-width=%222.9%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 fill=%22none%22%3E%3Ccircle cx='12' cy='7' r='4'/%3E%3Cpath d='M4 21v-2a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v2M12 15v4M10 17h4'/%3E%3C/svg%3E")}.fa-print{--i:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' stroke=%22black%22 stroke-width=%222.9%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 fill=%22none%22%3E%3Cpath d='M6 9V3h12v6M6 18H4v-7h16v7h-2'/%3E%3Crect x='6' y='14' width='12' height='7'/%3E%3C/svg%3E")}.fa-circle-check{--i:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' stroke=%22black%22 stroke-width=%222.9%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 fill=%22none%22%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M8 12l3 3 5-6'/%3E%3C/svg%3E")}.fa-shield-virus{--i:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' stroke=%22black%22 stroke-width=%222.9%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 fill=%22none%22%3E%3Cpath d='M12 2L4 5v6c0 5 3.4 9.400 8 11 4.600-1.600 8-6 8-11V5z'/%3E%3Ccircle cx='12' cy='11' r='2.500' fill='black'/%3E%3C/svg%3E")}.fa-battery-quarter{--i:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' stroke=%22black%22 stroke-width=%222.9%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 fill=%22none%22%3E%3Crect x='2' y='7' width='17' height='10' rx='2'/%3E%3Cpath d='M22 10v4'/%3E%3Crect x='4.500' y='9.500' width='4' height='5' fill='black'/%3E%3C/svg%3E")}.fa-wind{--i:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' stroke=%22black%22 stroke-width=%222.9%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 fill=%22none%22%3E%3Cpath d='M3 8h11a3 3 0 1 0-3-3M3 12h16a3 3 0 1 1-3 3M3 16h8'/%3E%3C/svg%3E")}.fa-vial-circle-check{--i:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' stroke=%22black%22 stroke-width=%222.9%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 fill=%22none%22%3E%3Cpath d='M9 3h6M10 3v7l-5 9a2 2 0 0 0 2 3h10a2 2 0 0 0 2-3l-5-9V3'/%3E%3Cpath d='M9.500 16l2 2 3.500-3.500'/%3E%3C/svg%3E")}.fa-flask{--i:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' stroke=%22black%22 stroke-width=%222.9%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 fill=%22none%22%3E%3Cpath d='M9 3h6M10 3v7l-5 9a2 2 0 0 0 2 3h10a2 2 0 0 0 2-3l-5-9V3'/%3E%3Cpath d='M8 15h8'/%3E%3C/svg%3E")}.fa-vial-virus{--i:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' stroke=%22black%22 stroke-width=%222.9%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 fill=%22none%22%3E%3Cpath d='M9 3h6M10 3v7l-5 9a2 2 0 0 0 2 3h10a2 2 0 0 0 2-3l-5-9V3'/%3E%3Ccircle cx='12' cy='17' r='1.200' fill='black'/%3E%3C/svg%3E")}.fa-diagram-project{--i:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' stroke=%22black%22 stroke-width=%222.9%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 fill=%22none%22%3E%3Ccircle cx='5' cy='5' r='2.300'/%3E%3Ccircle cx='19' cy='5' r='2.300'/%3E%3Ccircle cx='12' cy='19' r='2.300'/%3E%3Cpath d='M7.500 5h9M6 7l5 10M18 7l-5 10'/%3E%3C/svg%3E")}.fa-list-check{--i:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' stroke=%22black%22 stroke-width=%222.9%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 fill=%22none%22%3E%3Cpath d='M3.500 6l1.500 1.500L8 4.500M3.500 13l1.500 1.500 3-3M11 6h10M11 13h10M11 19h10M4 19h3'/%3E%3C/svg%3E")}.fa-sitemap{--i:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' stroke=%22black%22 stroke-width=%222.9%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 fill=%22none%22%3E%3Crect x='9' y='3' width='6' height='5'/%3E%3Crect x='2' y='16' width='6' height='5'/%3E%3Crect x='16' y='16' width='6' height='5'/%3E%3Cpath d='M12 8v4M5 16v-4h14v4'/%3E%3C/svg%3E")}.fa-triangle-exclamation{--i:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='black' stroke='black' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath stroke-width='1' d='M6.500 16V11a5.500 5.500 0 0 1 11 0v5z'/%3E%3Cpath stroke-width='1.600' d='M4 17h16v3.500H4z'/%3E%3Cpath fill='none' stroke-width='2' d='M12 2v2M3.700 5.500l1.400 1.400M20.300 5.500l-1.400 1.400M1.800 11.500h2M20.200 11.500h2'/%3E%3C/svg%3E")}.fa-arrow-right{--i:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' stroke=%22black%22 stroke-width=%222.9%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 fill=%22none%22%3E%3Cpath d='M4 12h16M14 6l6 6-6 6'/%3E%3C/svg%3E")}.fa-arrow-down{--i:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' stroke=%22black%22 stroke-width=%222.9%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 fill=%22none%22%3E%3Cpath d='M12 4v16M6 14l6 6 6-6'/%3E%3C/svg%3E")}.fa-bolt{--i:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill=%22black%22%3E%3Cpath d='M13 2L4 14h7l-1 8 9-12h-7z'/%3E%3C/svg%3E")}.fa-cloud-meatball{--i:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' stroke=%22black%22 stroke-width=%222.9%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 fill=%22none%22%3E%3Cpath d='M7 15a4 4 0 0 1 0-8 5 5 0 0 1 9.500 1A3.500 3.500 0 0 1 17 15zM7 19h10'/%3E%3C/svg%3E")}.fa-bug{--i:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' stroke=%22black%22 stroke-width=%222.9%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 fill=%22none%22%3E%3Cpath d='M9 9h6v8a3 3 0 0 1-6 0zM9 6a3 3 0 0 1 6 0M4 9l5 2M20 9l-5 2M4 16l5-1.500M20 16l-5-1.500M8 3l1.500 2M16 3l-1.500 2'/%3E%3C/svg%3E")}.fa-magnet{--i:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' stroke=%22black%22 stroke-width=%222.9%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 fill=%22none%22%3E%3Cpath d='M6 3v9a6 6 0 0 0 12 0V3M6 7h4M14 7h4'/%3E%3C/svg%3E")}.fa-bandage{--i:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' stroke=%22black%22 stroke-width=%222.9%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 fill=%22none%22%3E%3Cpath d='M4 15L15 4a3.500 3.500 0 0 1 5 5L9 20a3.500 3.500 0 0 1-5-5zM10 10l4 4'/%3E%3C/svg%3E")}.fa-lock{--i:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' stroke=%22black%22 stroke-width=%222.9%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 fill=%22none%22%3E%3Crect x='5' y='11' width='14' height='10' rx='1.500' fill='black'/%3E%3Cpath d='M8 11V7a4 4 0 0 1 8 0v4'/%3E%3C/svg%3E")}.fa-brain{--i:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' stroke=%22black%22 stroke-width=%222.9%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 fill=%22none%22%3E%3Cpath d='M12 4a3 3 0 0 0-5.500 1.500A3 3 0 0 0 4.500 11 3 3 0 0 0 6 16.500 3 3 0 0 0 12 18zM12 4a3 3 0 0 1 5.500 1.500A3 3 0 0 1 19.500 11 3 3 0 0 1 18 16.500 3 3 0 0 1 12 18z'/%3E%3C/svg%3E")}.fa-notes-medical{--i:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' stroke=%22black%22 stroke-width=%222.9%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 fill=%22none%22%3E%3Crect x='5' y='4' width='14' height='17' rx='1.500'/%3E%3Cpath d='M9 2h6v4H9zM12 10v6M9 13h6'/%3E%3C/svg%3E")}.fa-star{--i:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill=%22black%22%3E%3Cpath d='M12 2l3 7 7 .6-5.300 4.800L18.300 22 12 18l-6.300 4 1.600-7.600L2 9.600 9 9z'/%3E%3C/svg%3E")}.fa-wand-magic-sparkles{--i:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='black'%3E%3Cpath d='M3 19.500l10.500-10.500 2.500 2.500L5.500 22z'/%3E%3Cpath d='M19 1.500l1.100 3.200 3.200 1.100-3.200 1.100L19 10.100l-1.100-3.200-3.200-1.100 3.200-1.100z'/%3E%3Cpath d='M8.500 2l.8 2.200L11.500 5l-2.200.8L8.500 8l-.8-2.200L5.500 5l2.200-.8z'/%3E%3C/svg%3E")}.fa-gears{--i:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black'%3E%3Ccircle cx='9.500' cy='9.500' r='6.800' stroke-width='3' stroke-dasharray='2.600 2.600'/%3E%3Ccircle cx='9.500' cy='9.500' r='5' stroke-width='2.800'/%3E%3Ccircle cx='18' cy='18' r='3.800' stroke-width='2.200' stroke-dasharray='1.800 1.800'/%3E%3Ccircle cx='18' cy='18' r='2.600' stroke-width='2'/%3E%3C/svg%3E")}.fa-faucet-drip{--i:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='black'%3E%3Cpath d='M4 3h8v2.200H9.500V8H15a5 5 0 0 1 5 5v2.500h-4.500V13a.8.8 0 0 0-.8-.8H3V8h4.500V5.200H4z'/%3E%3Cpath d='M17.800 17c1.600 2 2.700 3.100 2.700 4.300a2.700 2.700 0 0 1-5.400 0c0-1.200 1.100-2.300 2.700-4.300z'/%3E%3C/svg%3E")}.fa-filter{--i:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='black'%3E%3Cpath d='M2.500 3.500h19l-7.500 9V20l-4 2v-9.500z'/%3E%3C/svg%3E")}.fa-shield-halved{--i:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='black'%3E%3Cpath fill-rule='evenodd' d='M12 1.500L3.500 4.800v6.400c0 5.300 3.600 9.600 8.500 11.300 4.900-1.700 8.500-6 8.500-11.300V4.800zM12 4v16.400c-3.400-1.500-6-4.800-6-9.200V6.500z'/%3E%3C/svg%3E")}.fa-lightbulb{--i:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='black'%3E%3Cpath d='M12 1.500a7.500 7.500 0 0 0-4.200 13.700c.5.400.7.900.7 1.500v.8h7v-.8c0-.6.2-1.100.7-1.500A7.500 7.500 0 0 0 12 1.500z'/%3E%3Cpath d='M8.800 18.800h6.400v1.300a1.700 1.700 0 0 1-1.700 1.700h-3a1.700 1.700 0 0 1-1.700-1.700z'/%3E%3C/svg%3E")}.fa-microscope{--i:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='black' stroke='black' stroke-linejoin='round'%3E%3Cpath stroke-width='1' d='M8 1.500l4.200 1.800-3.400 7.700-4.200-1.800z'/%3E%3Cpath stroke-width='1' d='M5.500 12l3.200 1.400-1 2.200-3.200-1.400z'/%3E%3Cpath fill='none' stroke-width='2.300' stroke-linecap='round' d='M12.500 6.500a6.200 6.200 0 0 1-.8 11.700H9'/%3E%3Cpath stroke-width='1' d='M4 18.500h7.500v2H4z'/%3E%3Cpath stroke-width='1.200' d='M2.500 21.300h19v1.500h-19z'/%3E%3C/svg%3E")}</style>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.9/dist/cdn.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+
+@media (orientation:portrait){.chips-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+body{font-family:'Inter',sans-serif}
+::-webkit-scrollbar{width:6px;height:6px}::-webkit-scrollbar-track{background:#f1f5f9}
+::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:4px}
+.scrollbar-none{scrollbar-width:none}.scrollbar-none::-webkit-scrollbar{display:none}
+@media print{header button{display:none}[x-cloak]{display:none}}
+</style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col antialiased" x-data="dash()" x-init="init()" x-cloak>
+
+<!-- ============================================================
+  CLIENT DATA — edit ONLY this block for each new client.
+  Text fields: {e:'Client text', p:'Practitioner text'} or one plain string (used in both views).
+  Tones: emerald | amber | indigo | rose | orange | purple | sky | slate
+  Icons: any Font Awesome 6 free "fa-solid" name (without the fa-solid prefix)
+  Optional: load a JSON file instead with  index.html?data=client.json
+============================================================ -->
+<script>
+const T=(e,p)=>({e,p});
+const CLIENT={
+ brand:{title:'Health Action Dashboard',sub:'Your Personalized Gut, Liver & Energy Roadmap'},
+ confidence:'Medium',
+ summary:{
+  badge:T('Big Picture Summary','Comprehensive Functional Synthesis'),
+  headline:T('“Your body is like a busy city stuck in a 20–30 year traffic jam — the gut, the liver and the power plant all need clearing and refuelling.”','Gut–Immune Load Driving Hepatic Congestion, a B2 Energy Bottleneck & Thyroid-Axis Slowdown'),
+  body:T('Think of your body like a busy city. The road crews (your enzymes) need fuel and tools (vitamins and minerals), but the delivery trucks are held up by roadwork: gut microbes, a hard-working liver and stress. Your labs show all three areas working overtime together. We start with a <b>2-Phase Plan</b>: <b>Phase I supports the foundations first</b>, then we re-check before going deeper.','<b>Upstream:</b> chronic mucosal immune activation and dysbiosis (sIgA 3793, anti-gliadin IgA 447, E. faecalis, S. aureus, Bacillus; low Akkermansia) with elevated OAT fungal/microbial metabolites (HMFA, FDCA, tartaric, arabinose). <b>Downstream:</b> hepatic/biliary and oxidative load (AST/ALT/GGT), a B2-dependent energy bottleneck, and functionally high TSH with low Free T4. <i>Genetic tendency is unknown (no genetic data). Educational synthesis only.</i>'),
+  chips:[
+   {label:'Primary Priority',icon:'shield-virus',tone:'rose',pill:'Red Flag',text:T('Calm the Gut Traffic','Gut / Mucosal & Microbial Load')},
+   {label:'Cleanup Crew',icon:'filter',tone:'orange',pill:'Red Flag',text:T('Ease the Liver Load','Hepatic / Biliary & GSH Strain')},
+   {label:'Energy & Pace',icon:'bolt',tone:'amber',pill:'Red Flag',text:T('Refuel the Power Plant','Mitochondrial B2 & Thyroid Axis')},
+   {label:'Current Protocol',icon:'vial-circle-check',tone:'emerald',pill:'ACTIVE',text:T('Phase I: Foundations','Phase I: Support & Stabilization')}]},
+ tabs:{
+  ecosystem:{icon:'diagram-project',tone:'teal',label:T('1. The 3-System Story','1. Pathway Matrix')},
+  actionplan:{icon:'list-check',tone:'emerald',label:T('2. Step-by-Step Action Plan','2. Phase Protocols')},
+  hierarchy:{icon:'sitemap',tone:'indigo',label:T('3. Root Cause Domino Effect','3. Root Cause Map')},
+  labs:{icon:'flask',tone:'amber',label:T('4. Lab Marker Meters','4. Lab Markers')},
+  safety:{icon:'triangle-exclamation',tone:'rose',label:T('5. Red Flags & Next Steps','5. Safety & Gaps')}},
+ systems:{
+  title:T('How Your 3 Body Systems Talk to Each Other','Interactive Tri-System Feedback Matrix'),
+  sub:T('Tap any system to see how it affects your body and why you may feel the way you do.','Select a node to review the biochemical mechanism, lab markers and targeted nutritional support.'),
+  nodes:[
+   {icon:'shield-virus',tone:'rose',status:'Red Flag',statusTone:'rose',name:T('1. The Gut & Immune Front Door','Gut / Mucosal & Microbial Load'),desc:T('Your gut lining and its bugs are on high alert, which keeps your immune system busy.','Mucosal immune activation, dysbiosis and mold/fungal metabolite load.'),marker:'sIgA (3793)',
+    focus:T('Focus: The Gut & Immune Front Door','Pathway Focus: Gut / Mucosal Immunity & Microbial Metabolites'),
+    what:T('Your gut’s defence system is working extremely hard, and some less-friendly bacteria are more present than they should be while helpful ones are low. This steady background “alarm” uses up nutrients and can add strain on the liver.','GI-MAP: sIgA 3793 µg/g and anti-gliadin IgA 447 U/L (extreme high); high E. faecalis (10x), S. aureus and Bacillus spp.; low Akkermansia and Enterobacter. OAT: extreme high HMFA (1499), FDCA (832) and hippuric (2713); high tartaric and arabinose. Pathogens, parasites and Candida not elevated on stool.'),
+    sym:T(['Constipation','Long-standing sleep disruption','Hair thinning'],['Symptoms: constipation, hair loss (18 years), sleep disruption, 20–30 year timeline','Blood: high monocytes, eosinophils, basophils','OAT: functionally high 4-cresol and 2-hydroxyhippuric']),
+    fix:T('Gut Support (gut lining & liver), Digestive Enzymes Chewable, and the Optimal Multivitamin for the helper nutrients.','Gut Support, Digestive Enzymes Chewable, Optimal Multivitamin (co-factors).')},
+   {icon:'filter',tone:'orange',status:'Congested',statusTone:'orange',name:T('2. The Liver & Cleanup Crew','Hepatic / Biliary & Transsulfuration (GSH)'),desc:T('Your liver filters and cleans up. Its markers show it is carrying a heavy workload.','Extreme AST/ALT/GGT with elevated glutathione (antioxidant) demand.'),marker:'AST · ALT · GGT',
+    focus:T('Focus: The Liver & Cleanup Crew','Pathway Focus: Hepatic / Biliary & Glutathione'),
+    what:T('Your liver is like the city’s recycling plant. It is handling extra load from the gut, stress and cellular “rust”, and it uses up lots of its own protective helper (glutathione) to do so.','Blood: extreme high AST, ALT and GGT; high alk phos, uric acid, total protein, albumin and globulin; low BUN, creatinine and LDL. OAT: high NAC (GSH demand), functionally high glutaric (low B2), functionally low ascorbic. 75% of amino-acid metabolites functionally low.'),
+    sym:T(['Easy weight gain','Skin hyperpigmentation','Tiredness and sleep disruption'],['Symptoms: easy weight gain, hyperpigmentation','Blood: extreme high AST, ALT, GGT; high alk phos','OAT: high NAC, functional high glutaric, functional low ascorbic']),
+    fix:T('Glutathione with Cofactors, Optimal PC, Gut Support (liver support), and the Optimal Multivitamin.','Glutathione with Cofactors, Optimal PC, Gut Support, Optimal Multivitamin.')},
+   {icon:'bolt',tone:'amber',status:'Slowed',statusTone:'amber',name:T('3. The Power Plant & Thermostat','Mitochondrial / B2 Energy Flux & Thyroid Axis'),desc:T('Turns food into energy, while the thyroid acts like the thermostat that sets your pace.','Krebs and fatty-acid flux with functionally high TSH and low Free T4.'),marker:'TSH ↑ · Free T4 ↓',
+    focus:T('Focus: The Power Plant & Thermostat','Pathway Focus: Mitochondrial / B2 & Thyroid Axis'),
+    what:T('Your cells are not turning food into energy as smoothly as they could, partly because they need more helper vitamins (especially B2). Your thyroid blood markers also suggest the body’s “thermostat” is running slow, which can affect energy, digestion and weight.','OAT: high suberic (fatty-acid oxidation / B2 / carnitine demand), functionally high glutaric (low B2), several functionally low Krebs intermediates. Blood: high triglycerides and glucose; functionally high TSH with low Free T4; low LDL. Free T3, reverse T3 and TPO/TgAb not yet tested.'),
+    sym:T(['Easy weight gain','Constipation','Hair thinning','Sleep and energy issues'],['Symptoms: weight gain, constipation, hair loss, sleep disruption','OAT: high suberic, functional high glutaric','Blood: functional high TSH, low Free T4, high triglycerides and glucose']),
+    fix:T('Optimal Multivitamin (B-vitamin helpers), Optimal Magnesium, Vitamin D3 + K2, and Acetyl-L-Carnitine (optional).','Optimal Multivitamin, Optimal Magnesium, Vitamin D3 + K2, Acetyl-L-Carnitine (secondary).')}]},
+ footer:'© 2026 Interactive Clinical Health Action Plan Dashboard. Educational synthesis only. Not medical diagnosis, prescribing or dosing advice. Genetic tendency is unknown and cannot be inferred from non-genetic data alone.',
+ loops:{
+  title:T('The 5 Domino Loops (How Systems Affect Each Other)','The 5 Cross-Pathway Feedback Loops'),
+  cols:['Link','Pathway Bridge','What Happens (Mechanism)','Symptom / Clue','Support Nutrients'],
+  rows:[
+   {from:T('Gut','Gut / Microbial'),to:T('Liver','Hepatic'),tone:'rose',mech:T('Gut “alarm” signals and microbe by-products reach the liver and add to its workload.','Mucosal/microbial metabolite load (HMFA, FDCA, tartaric) adds hepatic and oxidative burden (AST/ALT/GGT).'),sym:'Constipation, hyperpigmentation',nut:'Glutathione, B2, B6, bile & gut-lining support'},
+   {from:T('Liver','Hepatic / GSH'),to:T('Engine','Mitochondria'),tone:'orange',mech:T('A busy liver burns through protective helpers (glutathione, B2), leaving fewer for making energy.','Elevated GSH/cysteine demand drains B2, B3, glycine and Mg needed for Krebs and fatty-acid oxidation.'),sym:'Easy weight gain, low energy',nut:'B2, B3, glycine, Mg, NAC'},
+   {from:T('Engine','Mitochondria'),to:T('Thermostat','Thyroid axis'),tone:'amber',mech:T('Low energy output and a slow thermostat slow down gut movement and metabolism.','Low ATP efficiency with functional high TSH / low Free T4 slows basal metabolic rate and gut motility.'),sym:'Constipation, hair loss, weight gain',nut:'Selenium, zinc, iodine, iron, B-vitamins'},
+   {from:T('Gut','Gut / Microbial'),to:T('Sleep','Neurotransmitters'),tone:'purple',mech:T('Gut bugs can change the building blocks your brain uses for calm and sleep chemicals.','Functional high 4-cresol (Clostridia, DBH inhibition) and functional low 5-HIAA / kynurenic with 75% low AA metabolites limit serotonin and melatonin turnover.'),sym:'Sleep disruption',nut:'B6, Mg, Vitamin C, iron, tryptophan, tyrosine'},
+   {from:T('Thermostat','Thyroid axis'),to:T('Liver','Hepatic / Biliary'),tone:'emerald',mech:T('A slow thermostat can slow how the body handles fats and sugars, adding to liver load.','Metabolic slowing (high triglycerides and glucose) adds to hepatic and biliary strain.'),sym:'Easy weight gain, high triglycerides',nut:'Mg, B-vitamins, carnitine, Vitamin D'}]},
+ plan:{
+  rule:{title:T('Important Rule: Build the Foundations FIRST!','Sequencing Rationale: Phase I Before Deeper Gut / Detox Work'),
+   text:T('Your gut, liver and energy systems are all busy right now. If we push too hard to clear gut bugs or detox before your body has its helper nutrients, you could feel worse. So we support the foundations first, then re-check together.','Extreme AST/ALT/GGT, elevated GSH and B2 demand, and a fungal/mold metabolite load mean aggressive antimicrobial or binder strategies before co-factor and biliary support may be poorly tolerated. Re-evaluate before escalating.')},
+  p1:{badge:'Current Phase',title:T('Phase I: Foundations & Gentle Support','Phase I: Foundation & Metabolic Support'),tag:'Active Focus',list:'Phase I Supplement Checklist · No doses listed: follow your practitioner’s guidance and the product label',
+   items:[
+    {group:'Primary Items',name:'Seeking Health Optimal Multivitamin',tag:'All Essential Co-factors',tagTone:'amber',done:false,url:'https://iherb.co/VSLvwc4J?rcode=TSZ646&utm_medium=appshare',text:T('Supplies the full team of essential helper vitamins and minerals your “road crews” (enzymes) need to keep traffic moving.','Broad co-factor support, targeting the B2 and other B-vitamin demand flagged on OAT (functionally high glutaric).')},
+    {group:'Primary Items',name:'Seeking Health Digestive Enzymes Chewable',tag:'Digestion',tagTone:'indigo',done:false,url:'https://iherb.co/azL5aPmd?rcode=TSZ646&utm_medium=appshare',text:T('Helps break food down fully, so there is less left over in the gut for bugs to react to.','Digestive support to reduce undigested substrate available for microbial fermentation.')},
+    {group:'Primary Items',name:'Vitamin D3 + K2',tag:'Overall Support',tagTone:'sky',done:false,url:'https://iherb.co/iNfSmu7D?rcode=TSZ646&utm_medium=appshare',text:T('General support for your whole body, including bones and thyroid health.','Overall, bone and thyroid-axis support.')},
+    {group:'Primary Items',name:'Glutathione with Cofactors',tag:'Master Antioxidant',tagTone:'rose',done:false,url:'https://iherb.co/yuJ7m6Ex?rcode=TSZ646&utm_medium=appshare',text:T('Your body’s “master antioxidant”, helping your liver and cells handle daily wear and tear.','Direct GSH support with co-factors for elevated GSH/cysteine demand (OAT high NAC; extreme high AST/ALT/GGT).')},
+    {group:'Primary Items',name:'Optimal PC',tag:'Cell Membranes',tagTone:'teal',done:false,url:'https://iherb.co/UgbbXz6P?rcode=TSZ646&utm_medium=appshare',text:T('Helps repair and maintain cell membranes, the “walls” of your cells.','Phosphatidylcholine for cell-membrane repair; relevant given hepatic/biliary load.')},
+    {group:'Primary Items',name:'Gut Support',tag:'Gut & Liver · Highly Recommended',tagTone:'emerald',done:false,url:'https://iherb.co/cuWUt2C?rcode=TSZ646&utm_medium=appshare',text:T('Helps repair your gut lining and supports the liver. This is a top priority for you.','Gut-lining repair and liver support; priority item given extreme sIgA / anti-gliadin IgA and hepatic enzyme elevations.')},
+    {group:'Primary Items',name:'Seeking Health Optimal Magnesium',tag:'Mineral Support',tagTone:'purple',done:false,url:'https://iherb.co/LGcPTFP9?rcode=TSZ646&utm_medium=appshare',text:T('The magnesium in the multivitamin isn’t enough on its own, so this tops it up (or you can get more through your daily food).','Magnesium co-factor for energy, methylation and neurotransmitter pathways; multivitamin amount is insufficient. Diet is an alternative source.')},
+    {group:'Secondary Items (Optional)',name:'Acetyl-L-Carnitine',tag:'Optional · Start Week 3–4',tagTone:'orange',done:false,url:'https://iherb.co/HTMTNb34?rcode=TSZ646&utm_medium=appshare',text:T('An optional extra to support how your body uses fat for energy, if you’d like help letting go of some body fat. Note: hold off and add this in around week 3 or 4, once the other items are settled in.','Carnitine / fatty-acid transport support (OAT high suberic). Optional secondary item. Hold until week 3–4 (stagger in after primary items).')}]},
+  p2:{badge:'Upcoming',title:T('Phase II: Deeper Clean-Up (After Re-Check)','Phase II: Targeted Gut & Root-Cause Work'),tag:'Timing set by practitioner',
+   intro:T('Once the foundations are in place and we have re-checked your progress, we will decide together on the next step.','Determined after Phase I and follow-up testing. Categories below are placeholders drawn from the analysis, not a prescription.'),
+   items:[
+    {icon:'bug',tone:'rose',name:'Microbial Balance Strategy',text:'Targeted approach to opportunistic gut bacteria, plus keystone microbe support.'},
+    {icon:'filter',tone:'indigo',name:'Mold & Exposure Review',text:'Mycotoxin evaluation and exposure history to find sources of fungal metabolites.'},
+    {icon:'bandage',tone:'teal',name:'Barrier & Trigger Review',text:'Mucosal soothing and a check on gluten / dietary trigger reactivity.'}],
+   lock:'Re-evaluate labs, symptoms and tolerance before moving to Phase II.'}},
+ hierarchy:{
+  title:T('The Domino Effect: From Root Cause to Symptoms','Root Cause vs Downstream Hierarchy Tree'),
+  sub:T('This map shows how a long-running gut “alarm” can set off a chain reaction that ends in the symptoms you feel.','Cascade from upstream mucosal/microbial load to hepatic, mitochondrial and thyroid-axis bottlenecks and clinical symptoms.'),
+  levels:[
+   {tone:'rose',label:'Level 1: Root Causes',tag:'Primary Source',title:T('1. Gut Immune Alarm & Microbial / Mold Load','1. Chronic Mucosal Immune Activation, Dysbiosis & Fungal/Mold Metabolite Load'),text:T('A long-running “alarm” in the gut, an imbalance of gut bugs, and possible environmental mold exposure create ongoing background stress.','Extreme sIgA and anti-gliadin IgA, opportunistic overgrowth, depleted Akkermansia and elevated OAT fungal/microbial metabolites (HMFA, FDCA, tartaric, arabinose). Exposure source not yet identified.')},
+   {tone:'amber',label:'Level 2: Metabolic Drivers',tag:'Overload & Drain',title:T('2. Liver Congestion & Helper-Nutrient Drain','2. Hepatic/Biliary Congestion & GSH / B2 Co-factor Drain'),text:T('The liver is overloaded and uses up protective helpers (glutathione, B2 and others), so less is left for making energy.','Extreme AST/ALT/GGT; high NAC with functionally high glutaric (low B2); 75% of amino-acid metabolites functionally low.')},
+   {tone:'indigo',label:'Level 3: Downstream Effects',tag:'Slowed Energy & Thermostat',title:T('3. Slowed Energy Output & Thyroid Pattern','3. Mitochondrial Bottleneck & Functional High TSH / Low Free T4'),text:T('With fewer helpers available, cells make energy less efficiently and the thyroid “thermostat” reads slow.','High suberic, low Krebs intermediates, high triglycerides and glucose, functionally high TSH with low Free T4; low 5-HIAA / kynurenic with high 4-cresol.')},
+   {tone:'slate',tagTone:'rose',label:'Level 4: Symptoms You Feel',tag:'May improve as Levels 1–3 are supported',title:T('4. Constipation, Weight Gain, Hair Thinning & Sleep Issues','4. Clinical Presentation'),text:T('Constipation, easy weight gain, hair thinning (18 years), sleep disruption and skin pigmentation changes.','Constipation, easy weight gain, hair loss (18 years), sleep disruption and hyperpigmentation over a 20–30 year timeline.')}]},
+ labs:{
+  title:T('Your Lab Marker Gauge Meter','GI-MAP, OAT & Blood Chemistry Biomarker Profile'),
+  sub:T('A simple look at your main lab results and what they mean for your health.','Key stool, urinary organic acid and blood markers across gut, hepatic, mitochondrial and thyroid pathways.'),
+  markers:[
+   {name:'Secretory IgA (GI-MAP)',sub:'Gut Immune Defence',badge:'EXTREME HIGH (3793)',tone:'rose',pct:95,text:T('Your gut’s defence system is working at a very high level, like an alarm that has been ringing for a long time.','Extreme high sIgA (3793 µg/g) reflects marked mucosal immune activation.')},
+   {name:'Anti-gliadin IgA (GI-MAP)',sub:'Gluten / Mucosal Reactivity',badge:'EXTREME HIGH (447)',tone:'rose',pct:95,text:T('Your gut’s defence system is reacting strongly to gluten proteins.','Extreme high anti-gliadin IgA (447 U/L); mucosal gluten reactivity signal, not diagnostic on its own.')},
+   {name:'HMFA · FDCA · Hippuric (OAT)',sub:'Fungal & Microbial Metabolites',badge:'EXTREME HIGH',tone:'orange',pct:90,text:T('By-products made by fungi and gut microbes are showing up in high amounts.','HMFA 1499, FDCA 832, hippuric 2713 (extreme high); tartaric 4.7 and arabinose 62 high. Fungal/microbial load.')},
+   {name:'AST · ALT · GGT (Blood)',sub:'Liver Workload',badge:'EXTREME HIGH',tone:'rose',pct:95,text:T('Your liver is carrying a very heavy workload. Please review these results with your doctor.','Extreme high AST, ALT and GGT with high alk phos and uric acid: hepatic/biliary load. Medical follow-up advised.')},
+   {name:'Glutaric Acid (OAT)',sub:'Vitamin B2 Need',badge:'FUNC. HIGH',tone:'amber',pct:75,text:T('A sign your cells may need more vitamin B2, one of the energy “spark plug” vitamins.','Functionally high glutaric points to low B2 (riboflavin); suberic also high (4.1).')},
+   {name:'TSH & Free T4 (Blood)',sub:'Thyroid “Thermostat”',badge:'TSH FUNC. HIGH · FT4 LOW',tone:'purple',pct:70,text:T('The thermostat that sets your body’s pace looks like it is running slow.','Functionally high TSH with low Free T4. Free T3, reverse T3 and TPO/TgAb are still needed.')},
+   {name:'NAC & Ascorbic Acid (OAT)',sub:'Antioxidant Demand',badge:'NAC HIGH · VIT C FUNC. LOW',tone:'sky',pct:65,text:T('Your body is asking for more raw materials to make its protective antioxidants.','High NAC (GSH demand) with functionally low ascorbic acid.')},
+   {name:'5-HIAA · Kynurenic · 4-Cresol (OAT)',sub:'Sleep & Mood Chemistry',badge:'FUNC. LOW 5-HIAA',tone:'indigo',pct:25,text:T('The building blocks for calming, sleep-supporting brain chemicals look low, and a gut by-product (4-cresol) is high.','Functionally low 5-HIAA and kynurenic; functionally high 4-cresol; 75% of amino-acid metabolites functionally low.')},
+   {name:'Oxalate Markers (OAT)',sub:'Oxalate Pathway',badge:'WITHIN RANGE',tone:'emerald',pct:40,text:T('Good news: your oxalate markers are in the normal range.','Oxalic 50 (ref 6.8–101), glycolic 4.0 and glyceric 53 all within range; elastase >750 and steatocrit <dl.')}]},
+ safety:{
+  flagsTitle:T('When to Contact Your Doctor Immediately','Clinician Review & Warning Signs'),flagsSub:'Critical warning signs requiring prompt medical evaluation.',
+  flags:[
+   {icon:'notes-medical',title:T('1. Liver Signs: Yellowing, Dark Urine or Upper Abdominal Pain','1. Hepatic Warning Signs (Extreme AST/ALT/GGT)'),text:T('Yellowing of the eyes or skin, dark urine, pale stools, or severe pain in the upper right belly. Please also review your liver results with your doctor.','Extreme AST/ALT/GGT warrants physician follow-up. Report jaundice, dark urine, pale stools or RUQ pain urgently; consider bilirubin and a hepatic workup.')},
+   {icon:'vial-virus',title:T('2. Fever, Blood in Stool or Severe Belly Pain','2. Acute GI Red Flags'),text:T('Fever with severe belly pain, blood in the stool, or ongoing vomiting or diarrhoea.','Acute GI red flags need urgent evaluation regardless of GI-MAP findings.')},
+   {icon:'brain',title:T('3. Extreme Tiredness, Confusion or Very Slow Heartbeat','3. Severe Hypothyroid Features'),text:T('Extreme tiredness, feeling very cold, confusion, or a very slow heartbeat.','Functional high TSH / low Free T4: severe hypothyroid features warrant urgent clinical review.')}],
+  testsTitle:'Recommended Next Lab Tests',testsSub:'To fill data gaps and confirm the pattern.',
+  tests:[
+   {priority:'High Priority #1',title:'1. Mold, Exposure & Biofilms (MycoTOX Profile)',text:T('Helps us find where the fungal by-products may be coming from, including hidden mold or biofilm exposure.','MycoTOX (urinary mycotoxin) profile; mold/biofilm exposure and travel history, 3-day food diary and full symptom/medication review.')},
+   {title:'2. Genetic Testing (StrateGene / Raw Data)',text:T('Shows the “speed” of your body’s helper enzymes so we are not guessing from labs and symptoms.','Clarify underlying enzyme tendencies; genetic status currently unknown.')},
+   {title:'3. Expanded Thyroid & Iron Panel',text:T('Gives a fuller picture of your thyroid thermostat and iron levels.','Free T3, reverse T3, TPO and TgAb antibodies; ferritin, serum iron, TIBC and % saturation.')},
+   {title:'4. Blood Sugar, Lipids & Inflammation',text:T('Checks how your body handles sugar and fats, and looks for background inflammation.','Fasting insulin, HbA1c, lipid subfractions / ApoB, hsCRP and RBC magnesium.')}]}
+};
+</script>
+<!-- ================= END CLIENT DATA ================= -->
+
+<!-- Header -->
+<header class="fixed top-0 inset-x-0 z-50 bg-white border-b border-slate-200 shadow-sm">
+ <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-wrap items-center justify-between gap-4">
+  <div class="flex items-center space-x-3">
+   <div class="w-[37px] h-[37px] flex items-center justify-center bg-gradient-to-br from-[#4aa882] to-[#2f8f68] rounded-xl shadow-md shadow-emerald-700/25"><svg viewBox="0 0 24 24" class="w-[22px] h-[22px]"><path d="M12 21C5 15.500 2 12 2 8.200 2 5.300 4.200 3 7 3c2 0 3.800 1.100 5 2.900C13.200 4.100 15 3 17 3c2.800 0 5 2.300 5 5.200 0 3.800-3 7.300-10 12.800z" fill="#fff"/><path d="M4 11.500h4.500l1.800-3.500 3 7 1.700-3.500H20" fill="none" stroke="#3a9873" stroke-width="1.800" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+   <div><h1 class="text-xl font-bold text-slate-900 tracking-tight" x-text="D.brand.title"></h1><p class="text-xs text-slate-500 font-medium" x-text="D.brand.sub"></p></div>
+  </div>
+  <div class="flex items-center bg-slate-100 p-1 rounded-xl border border-slate-200">
+   <button @click="mode='e'" :class="mode==='e'?'bg-white text-teal-700 shadow-sm font-semibold':'text-slate-600 hover:text-slate-900 font-medium'" class="px-4 py-2 text-xs sm:text-sm rounded-lg transition-all duration-200 flex items-center space-x-2"><i class="fa-solid fa-lightbulb text-amber-500"></i><span>Client View</span></button>
+   <button @click="mode='p'" :class="mode==='p'?'bg-white text-indigo-700 shadow-sm font-semibold':'text-slate-600 hover:text-slate-900 font-medium'" class="px-4 py-2 text-xs sm:text-sm rounded-lg transition-all duration-200 flex items-center space-x-2"><i class="fa-solid fa-microscope text-indigo-600"></i><span>Practitioner View</span></button>
+  </div>
+  <button @click="window.print()" class="px-3 py-2 text-xs font-semibold text-slate-600 bg-slate-100 hover:bg-slate-200 rounded-lg transition flex items-center gap-1.5"><i class="fa-solid fa-print"></i><span class="hidden sm:inline">Print / Save PDF</span></button>
+ </div>
+</header>
+<div id="hdr-spacer"></div>
+
+<main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
+
+ <!-- Summary banner -->
+ <div class="relative overflow-hidden rounded-2xl p-6 sm:p-8 text-white shadow-xl" :class="mode==='e'?'bg-gradient-to-br from-emerald-800 via-emerald-900 to-teal-900':'bg-gradient-to-br from-indigo-900 via-[#141c3d] to-slate-950'">
+  <div class="absolute inset-0 pointer-events-none" x-show="mode==='p'" style="background:radial-gradient(ellipse at 85% 100%,rgba(20,184,166,.22),transparent 55%)"></div>
+  <div class="relative space-y-4">
+   <div class="flex flex-wrap items-center justify-between gap-2">
+    <span class="px-3 py-1 rounded-full text-xs font-bold tracking-wide uppercase inline-flex items-center gap-2" :class="mode==='e'?'bg-amber-400 text-slate-950':'bg-indigo-400 text-indigo-950'"><i class="fa-solid" :class="mode==='e'?'fa-wand-magic-sparkles':'fa-flask'"></i><span x-text="t(D.summary.badge)"></span></span>
+    <div class="text-xs text-slate-300 flex items-center gap-1.5 bg-slate-800/80 px-3 py-1 rounded-full border border-slate-700"><i class="fa-solid fa-circle-check text-emerald-400"></i><span>Analysis Confidence: <b class="text-white" x-text="D.confidence"></b></span></div>
+   </div>
+   <h2 class="text-xl sm:text-2xl lg:text-3xl font-extrabold text-white leading-snug" x-text="t(D.summary.headline)"></h2>
+   <p class="text-slate-200 text-sm leading-relaxed max-w-4xl" x-html="t(D.summary.body)"></p>
+   <div class="chips-grid grid grid-cols-2 lg:grid-cols-4 gap-3 pt-2">
+    <template x-for="c in D.summary.chips"><div class="bg-black/25 rounded-xl p-3 border border-white/25 flex items-start justify-between gap-2">
+     <div class="min-w-0"><div class="text-xs text-white/90 uppercase tracking-wider font-semibold" x-text="c.label"></div>
+     <div class="text-sm font-bold flex items-center gap-1.5 mt-1" :class="'text-'+c.tone+'-200'"><i :class="'fa-solid fa-'+c.icon"></i><span x-text="t(c.text)"></span></div></div>
+     <span x-show="c.pill" class="self-center text-sm font-bold px-2.5 py-1 rounded-md border whitespace-nowrap" :class="'bg-'+c.tone+'-400/25 border-'+c.tone+'-300/60 text-'+c.tone+'-100'" x-text="c.pill"></span>
+    </div></template>
+   </div>
+  </div>
+ </div>
+
+ <!-- Tabs -->
+ <div class="tabs-row overflow-x-auto scrollbar-none scroll-smooth border-b border-slate-200 pb-3"><div class="flex gap-2 w-max mx-auto"><template x-for="(tb,id) in D.tabs" :key="id"><button @click="tab=id" :class="tab===id?'bg-emerald-600 border-emerald-600 text-white shadow-md':'bg-white border-slate-200 text-slate-700 hover:bg-slate-50 shadow-sm'" class="px-3 py-2 text-sm font-semibold rounded-xl border transition flex items-center gap-1.5 whitespace-nowrap shrink-0"><i :class="'fa-solid fa-'+tb.icon+' '+(tab===id?'text-white':'text-'+tb.tone+'-600')"></i><span x-text="t(tb.label)"></span><span x-show="id==='actionplan'" class="text-sm font-bold px-2 py-0.5 rounded-full bg-amber-400 text-amber-950" x-text="doneCount()+'/'+D.plan.p1.items.length"></span></button></template></div></div>
+
+ <!-- TAB 1 -->
+ <div x-show="tab==='ecosystem'" x-transition class="space-y-6">
+  <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+   <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6"><div><h3 class="text-lg font-bold text-slate-900" x-text="t(D.systems.title)"></h3><p class="text-sm text-slate-500" x-text="t(D.systems.sub)"></p></div><span class="self-start text-xs font-bold bg-amber-100 text-amber-800 px-3 py-1.5 rounded-lg whitespace-nowrap" x-text="D.loops.rows.length+' Inter-Pathway Links Active'"></span></div>
+   <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+    <template x-for="(n,i) in D.systems.nodes"><div @click="node=i" :class="node===i?'ring-2 ring-'+n.tone+'-500 bg-'+n.tone+'-50/60 shadow-md':'hover:bg-slate-50 bg-white'" class="cursor-pointer rounded-2xl p-5 border border-slate-200 transition-all duration-200 group">
+     <div class="flex items-center justify-between mb-3"><div class="p-3 rounded-xl font-bold text-xl" :class="'bg-'+n.tone+'-100 text-'+n.tone+'-700'"><i :class="'fa-solid fa-'+n.icon"></i></div>
+      <span class="text-xs font-bold px-2 py-0.5 rounded uppercase" :class="'bg-'+n.statusTone+'-100 text-'+n.statusTone+'-700'" x-text="n.status"></span></div>
+     <h4 class="font-bold text-slate-900 text-base" x-text="t(n.name)"></h4>
+     <p class="text-sm text-slate-500 mt-1" x-text="t(n.desc)"></p>
+     <div class="mt-4 pt-3 border-t border-slate-200/60 flex justify-between text-xs font-medium text-slate-600"><span>Key Marker: <b x-text="n.marker"></b></span><span :class="'text-'+n.tone+'-600'" class="group-hover:translate-x-1 transition-transform">Explore <i class="fa-solid fa-arrow-right"></i></span></div>
+    </div></template>
+   </div>
+   <template x-for="n in [D.systems.nodes[node]]" :key="node"><div class="bg-slate-50 rounded-2xl p-6 border border-slate-200 space-y-4">
+    <div class="flex items-center gap-3"><span class="p-2 text-white rounded-lg text-sm" :class="'bg-'+n.tone+'-600'"><i :class="'fa-solid fa-'+n.icon"></i></span><h4 class="text-lg font-bold text-slate-900" x-text="t(n.focus)"></h4></div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+     <div class="bg-white p-4 rounded-xl border border-slate-200 space-y-2"><div class="text-xs font-bold text-slate-400 uppercase">What Is Happening</div><p class="text-sm text-slate-700 leading-relaxed" x-text="t(n.what)"></p></div>
+     <div class="bg-white p-4 rounded-xl border border-slate-200 space-y-2"><div class="text-xs font-bold text-slate-400 uppercase" x-text="mode==='e'?'Symptoms You Feel':'Clinical Clues & OAT Markers'"></div><p class="text-sm text-slate-700 leading-relaxed" x-text="t(n.sym).join(' • ')"></p></div>
+    </div>
+    <div class="p-4 rounded-xl border" :class="'bg-'+n.tone+'-100/60 border-'+n.tone+'-200'"><span class="text-xs font-bold uppercase" :class="'text-'+n.tone+'-900'">Targeted Phase 1 Solution:</span><p class="text-sm mt-1 font-medium" :class="'text-'+n.tone+'-800'" x-text="t(n.fix)"></p></div>
+   </div></template>
+  </div>
+  <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+   <h3 class="text-lg font-bold text-slate-900 mb-5" x-text="t(D.loops.title)"></h3>
+   <div class="overflow-x-auto"><table class="w-full text-left min-w-[780px]">
+    <thead><tr class="bg-slate-50 text-xs font-bold text-slate-600 uppercase tracking-wide"><template x-for="(c,i) in D.loops.cols"><th class="px-4 py-3" :class="i===0?'rounded-l-xl':i===4?'rounded-r-xl':''" x-text="c"></th></template></tr></thead>
+    <tbody class="text-sm">
+     <template x-for="(r,i) in D.loops.rows"><tr class="border-b border-slate-100 last:border-0 align-middle">
+      <td class="px-4 py-4 font-bold text-teal-700" x-text="'#'+(i+1)"></td>
+      <td class="px-4 py-4 font-bold text-slate-900"><span x-text="t(r.from)"></span> <i class="fa-solid fa-arrow-right text-slate-500 text-xs"></i> <span x-text="t(r.to)"></span></td>
+      <td class="px-4 py-4 text-slate-600" x-text="t(r.mech)"></td>
+      <td class="px-4 py-4 text-slate-600" x-text="r.sym"></td>
+      <td class="px-4 py-4 font-semibold" :class="'text-'+r.tone+'-700'" x-text="r.nut"></td>
+     </tr></template>
+    </tbody></table></div>
+  </div>
+ </div>
+
+ <!-- TAB 2 -->
+ <div x-show="tab==='actionplan'" x-transition class="space-y-6">
+  <div class="bg-amber-50 border-l-4 border-amber-500 rounded-2xl p-5 flex gap-4 items-start shadow-sm">
+   <div class="p-3 bg-amber-500 text-white rounded-xl"><i class="fa-solid fa-triangle-exclamation text-xl"></i></div>
+   <div><h4 class="font-bold text-amber-900 text-base" x-text="t(D.plan.rule.title)"></h4><p class="text-sm text-amber-800 mt-1 leading-relaxed" x-text="t(D.plan.rule.text)"></p></div>
+  </div>
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+   <div class="lg:col-span-2 bg-white rounded-2xl p-6 border-2 border-emerald-500 shadow-sm space-y-5">
+    <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-100">
+     <div class="flex flex-wrap items-center gap-3"><span class="px-3 py-1 bg-emerald-600 text-white text-xs font-bold rounded-full uppercase" x-text="D.plan.p1.badge"></span><h3 class="text-lg font-bold text-slate-900" x-text="t(D.plan.p1.title)"></h3></div>
+     <span class="text-xs font-semibold text-emerald-700 bg-emerald-50 px-3 py-1 rounded-lg" x-text="D.plan.p1.tag"></span>
+    </div>
+    <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider" x-text="D.plan.p1.list"></h4>
+    <div class="space-y-3">
+     <template x-for="(it,i) in D.plan.p1.items"><div><h5 x-show="it.group && (i===0 || D.plan.p1.items[i-1].group!==it.group)" class="text-xs font-bold text-slate-500 uppercase tracking-wider mt-2 mb-2" x-text="it.group"></h5><label class="flex gap-3 items-start p-4 rounded-xl border border-slate-200 bg-slate-50/60 hover:bg-slate-50 cursor-pointer transition">
+      <input type="checkbox" x-model="it.done" class="mt-1 h-5 w-5 rounded border-slate-300 text-teal-600 focus:ring-teal-500">
+      <div class="flex-1"><div class="flex flex-wrap items-center justify-between gap-2"><span class="font-semibold text-slate-900 text-base" x-text="it.name"></span><span class="text-xs font-semibold px-2.5 py-0.5 rounded" :class="'bg-'+it.tagTone+'-100 text-'+it.tagTone+'-800'" x-text="it.tag"></span></div>
+      <p class="text-sm text-slate-600 mt-1 leading-relaxed" x-text="t(it.text)"></p>
+      <a x-show="it.url" :href="it.url" target="_blank" rel="noopener" @click.stop class="inline-flex items-center gap-1 mt-2 text-xs font-semibold text-teal-700 hover:text-teal-900 underline-offset-2 hover:underline">View on iHerb <i class="fa-solid fa-arrow-right"></i></a></div>
+     </label></div></template>
+    </div>
+    <div class="pt-3">
+     <div class="flex justify-between text-xs font-semibold text-slate-600 mb-1.5"><span>Daily Compliance Progress:</span><span class="text-emerald-700" x-text="progress()+'% Completed'"></span></div>
+     <div class="h-2.5 bg-slate-100 rounded-full overflow-hidden"><div class="h-full bg-emerald-500 rounded-full transition-all duration-500" :style="'width:'+progress()+'%'"></div></div>
+    </div>
+   </div>
+   <div class="bg-slate-100/70 rounded-2xl p-6 border border-slate-200 space-y-4">
+    <div class="flex flex-wrap items-start justify-between gap-2 pb-4 border-b border-slate-200">
+     <div class="flex items-start gap-3"><span class="px-3 py-1 bg-slate-500 text-white text-xs font-bold rounded-full uppercase mt-0.5" x-text="D.plan.p2.badge"></span><h3 class="text-lg font-bold text-slate-800 leading-tight" x-text="t(D.plan.p2.title)"></h3></div>
+     <span class="text-xs font-semibold text-slate-600 bg-slate-200 px-3 py-1 rounded-lg" x-text="D.plan.p2.tag"></span>
+    </div>
+    <p class="text-sm text-slate-600 leading-relaxed" x-text="t(D.plan.p2.intro)"></p>
+    <div class="space-y-2.5">
+     <template x-for="it in D.plan.p2.items"><div class="flex gap-3 items-center bg-white p-3.5 rounded-xl border border-slate-200"><i :class="'fa-solid fa-'+it.icon+' text-lg text-'+it.tone+'-500'"></i><div><div class="font-semibold text-base text-slate-800" x-text="it.name"></div><div class="text-sm text-slate-500" x-text="it.text"></div></div></div></template>
+    </div>
+    <div class="bg-amber-50 border border-amber-200 text-amber-900 text-sm rounded-xl p-3.5 flex gap-2 items-start"><i class="fa-solid fa-lock mt-0.5"></i><span><b>Phase 2 Locked:</b> <span x-text="D.plan.p2.lock"></span></span></div>
+   </div>
+  </div>
+ </div>
+
+ <!-- TAB 3 -->
+ <div x-show="tab==='hierarchy'" x-transition>
+  <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 space-y-6">
+   <div><h3 class="text-lg font-bold text-slate-900" x-text="t(D.hierarchy.title)"></h3><p class="text-sm text-slate-500" x-text="t(D.hierarchy.sub)"></p></div>
+   <div class="space-y-3">
+    <template x-for="(l,i) in D.hierarchy.levels"><div>
+     <div class="rounded-2xl p-5 border" :class="'bg-'+l.tone+'-50 border-'+l.tone+'-200'">
+      <div class="flex flex-wrap items-center justify-between gap-2 mb-2"><span class="px-3 py-1 text-white text-xs font-bold rounded-full uppercase" :class="l.tone==='slate'?'bg-slate-700':'bg-'+l.tone+'-600'" x-text="l.label"></span><span class="text-xs font-semibold" :class="'text-'+(l.tagTone||l.tone)+'-700'" x-text="l.tag"></span></div>
+      <h4 class="font-bold text-slate-900 text-base" x-text="t(l.title)"></h4>
+      <p class="text-sm text-slate-600 mt-1 leading-relaxed" x-text="t(l.text)"></p>
+     </div>
+     <div class="flex justify-center py-3 text-slate-400" x-show="i<D.hierarchy.levels.length-1"><i class="fa-solid fa-arrow-down"></i></div>
+    </div></template>
+   </div>
+  </div>
+ </div>
+
+ <!-- TAB 4 -->
+ <div x-show="tab==='labs'" x-transition>
+  <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 space-y-6">
+   <div><h3 class="text-lg font-bold text-slate-900" x-text="t(D.labs.title)"></h3><p class="text-sm text-slate-500" x-text="t(D.labs.sub)"></p></div>
+   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+    <template x-for="m in D.labs.markers"><div class="rounded-2xl p-5 border border-slate-200 bg-white hover:shadow-md transition">
+     <div class="flex items-start justify-between gap-2"><div><h4 class="font-bold text-slate-900 text-base" x-text="m.name"></h4><span class="text-xs text-slate-500" x-text="m.sub"></span></div>
+      <span class="text-xs font-bold px-2 py-0.5 rounded whitespace-nowrap" :class="'bg-'+m.tone+'-100 text-'+m.tone+'-700'" x-text="m.badge"></span></div>
+     <div class="h-2.5 bg-slate-200 rounded-full overflow-hidden mt-4 mb-3"><div class="h-full rounded-full" :class="'bg-'+m.tone+'-500'" :style="'width:'+m.pct+'%'"></div></div>
+     <p class="text-sm text-slate-600 leading-relaxed"><b x-text="mode==='e'?'Simple: ':'Practitioner: '"></b><span x-text="t(m.text)"></span></p>
+    </div></template>
+   </div>
+  </div>
+ </div>
+
+ <!-- TAB 5 -->
+ <div x-show="tab==='safety'" x-transition>
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+   <div class="lg:col-span-2 bg-white rounded-2xl p-6 border border-rose-200 shadow-sm space-y-4">
+    <div class="flex items-center gap-3 pb-4 border-b border-slate-100"><i class="fa-solid fa-triangle-exclamation text-2xl text-rose-600"></i><div><h3 class="text-lg font-bold text-slate-900" x-text="t(D.safety.flagsTitle)"></h3><p class="text-sm text-slate-500" x-text="D.safety.flagsSub"></p></div></div>
+    <template x-for="f in D.safety.flags"><div class="flex gap-3 items-start bg-rose-50 border border-rose-200 rounded-xl p-4"><i :class="'fa-solid fa-'+f.icon+' text-rose-600 mt-1'"></i><div><h4 class="font-bold text-base text-rose-900" x-text="t(f.title)"></h4><p class="text-sm text-rose-800 mt-0.5 leading-relaxed" x-text="t(f.text)"></p></div></div></template>
+   </div>
+   <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-4">
+    <div class="flex items-center gap-3 pb-4 border-b border-slate-100"><i class="fa-solid fa-vial-circle-check text-2xl text-teal-600"></i><div><h3 class="text-lg font-bold text-slate-900" x-text="D.safety.testsTitle"></h3><p class="text-sm text-slate-500" x-text="D.safety.testsSub"></p></div></div>
+    <template x-for="s in D.safety.tests"><div class="rounded-xl p-4 border" :class="s.priority?'bg-amber-50 border-2 border-amber-400':'bg-slate-50 border-slate-200'">
+     <span x-show="s.priority" class="inline-flex items-center gap-1 px-2.5 py-0.5 bg-amber-400 text-amber-950 text-xs font-bold rounded-full uppercase mb-2"><i class="fa-solid fa-star"></i><span x-text="s.priority"></span></span>
+     <h4 class="font-bold text-base text-slate-900" x-text="s.title"></h4><p class="text-sm text-slate-600 mt-1 leading-relaxed" x-text="t(s.text)"></p>
+    </div></template>
+   </div>
+  </div>
+ </div>
+
+</main>
+
+<footer class="bg-white border-t border-slate-200 mt-6 py-6 px-4 text-center"><p class="text-xs text-slate-500" x-text="D.footer"></p></footer>
+
+<script>
+function dash(){return{
+ D:CLIENT,mode:'e',tab:'ecosystem',node:0,
+ t(v){return (v&&typeof v==='object'&&!Array.isArray(v)&&('e' in v))?v[this.mode]:v},
+ doneCount(){return this.D.plan.p1.items.filter(i=>i.done).length},
+ progress(){const a=this.D.plan.p1.items;return a.length?Math.round(a.filter(i=>i.done).length/a.length*100):0},
+ async init(){const h=document.querySelector('header'),sp=document.getElementById('hdr-spacer'),fit=()=>{sp.style.height=h.offsetHeight+'px'};fit();new ResizeObserver(fit).observe(h);window.addEventListener('resize',fit);
+  const u=new URLSearchParams(location.search).get('data');
+  if(u){try{this.D=await (await fetch(u)).json()}catch(e){console.warn('Could not load',u,e)}}}
+}}
+</script>
+</body>
+</html>
